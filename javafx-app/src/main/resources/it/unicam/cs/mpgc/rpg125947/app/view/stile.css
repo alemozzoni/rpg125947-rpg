@@ -94,22 +94,23 @@
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.9), 10, 0.3, 0, 1);
 }
 
-/* Input "macchina da scrivere": niente box, solo riga inferiore. */
+/* Campo nome "targhetta": riquadro morbido dagli angoli arrotondati. */
 .campo-nome {
   -fx-font-family: "Courier Prime", "Courier New", monospace;
   -fx-font-size: 16px;
-  -fx-background-color: transparent;
-  -fx-background-radius: 0;
-  -fx-border-color: transparent transparent -contorno transparent;
-  -fx-border-width: 0 0 1.5 0;
-  -fx-padding: 8 2;
+  -fx-background-color: rgba(12, 14, 17, 0.55);
+  -fx-background-radius: 22;
+  -fx-border-color: -contorno;
+  -fx-border-width: 1.5;
+  -fx-border-radius: 22;
+  -fx-padding: 10 18;
   -fx-text-fill: -testo;
   -fx-prompt-text-fill: #7c7468;
 }
 
-/* Riga che si illumina di giallo neon quando il campo e attivo. */
+/* Il bordo arrotondato si accende di giallo neon quando il campo e attivo. */
 .campo-nome:focused {
-  -fx-border-color: transparent transparent -neon transparent;
+  -fx-border-color: -neon;
 }
 
 .messaggio-errore {
