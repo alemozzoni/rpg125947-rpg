@@ -73,4 +73,25 @@ class InvestigatoreTest {
         Investigatore inv = conAttributi(2, 2, 2, 2);
         assertThrows(IllegalStateException.class, () -> inv.potenzia(Attributo.INTUITO));
     }
+
+    @Test
+    void loStileInvestigativoELAttributoPiuAlto() {
+        assertEquals(Attributo.ELOQUENZA, conAttributi(2, 3, 6, 4).attributoDominante());
+        assertEquals(Attributo.LOGICA, conAttributi(1, 2, 3, 5).attributoDominante());
+    }
+
+    @Test
+    void aParitaDiValoreVinceIlPrimoInOrdine() {
+        // OSSERVAZIONE precede gli altri nell'enum: a parita vince lei.
+        assertEquals(Attributo.OSSERVAZIONE, conAttributi(4, 4, 4, 4).attributoDominante());
+        assertEquals(Attributo.INTUITO, conAttributi(2, 5, 5, 1).attributoDominante());
+    }
+
+    @Test
+    void loStileRifletteLaSpesaDeiPunti() {
+        Investigatore inv = conAttributi(3, 3, 3, 3);
+        inv.aggiungiEsperienza(30);
+        inv.potenzia(Attributo.INTUITO);
+        assertEquals(Attributo.INTUITO, inv.attributoDominante());
+    }
 }
