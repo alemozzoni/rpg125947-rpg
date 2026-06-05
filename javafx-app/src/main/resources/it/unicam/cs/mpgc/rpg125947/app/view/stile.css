@@ -94,22 +94,24 @@
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.9), 10, 0.3, 0, 1);
 }
 
-/* Input "macchina da scrivere": niente box, solo riga inferiore. */
+/* Campo nome "targhetta": riquadro morbido dagli angoli arrotondati. */
 .campo-nome {
   -fx-font-family: "Courier Prime", "Courier New", monospace;
   -fx-font-size: 16px;
-  -fx-background-color: transparent;
-  -fx-background-radius: 0;
-  -fx-border-color: transparent transparent -contorno transparent;
-  -fx-border-width: 0 0 1.5 0;
-  -fx-padding: 8 2;
-  -fx-text-fill: -testo;
-  -fx-prompt-text-fill: #7c7468;
+  -fx-background-color: rgba(12, 14, 17, 0.55);
+  -fx-background-radius: 22;
+  /* Stesso colore del titolo del gioco (-primario-chiaro): bordo e testo. */
+  -fx-border-color: -primario-chiaro;
+  -fx-border-width: 1.5;
+  -fx-border-radius: 22;
+  -fx-padding: 10 18;
+  -fx-text-fill: -primario-chiaro;
+  -fx-prompt-text-fill: derive(-primario-chiaro, -35%);
 }
 
-/* Riga che si illumina di giallo neon quando il campo e attivo. */
+/* Il bordo arrotondato si accende di giallo neon quando il campo e attivo. */
 .campo-nome:focused {
-  -fx-border-color: transparent transparent -neon transparent;
+  -fx-border-color: -neon;
 }
 
 .messaggio-errore {
@@ -213,8 +215,9 @@
   -fx-padding: 4;
 }
 
+/* Hover: alone sepia tenue, in tono con la palette (non piu giallo neon acceso). */
 .sprite-personaggio:hover {
-  -fx-effect: dropshadow(gaussian, rgba(223, 237, 0, 0.85), 20, 0.4, 0, 0);
+  -fx-effect: dropshadow(gaussian, rgba(230, 193, 138, 0.5), 22, 0.3, 0, 0);
 }
 
 .nome-personaggio {
