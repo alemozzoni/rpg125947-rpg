@@ -82,7 +82,9 @@ public final class FinestraTaccuino {
         contenitore.getChildren().add(card("Investigatore " + inv.getNome(),
                 "Livello " + inv.getLivello()
                         + "\nEsperienza: " + inv.getEsperienza() + " / " + inv.esperienzaProssimoLivello() + " PE"
-                        + "\nPunti abilita disponibili: " + inv.getPuntiAbilita()));
+                        + "\nPunti abilita disponibili: " + inv.getPuntiAbilita()
+                        + "\nStile investigativo: " + inv.attributoDominante().etichetta()
+                        + " (sblocca domande dedicate nei dialoghi)"));
 
         for (Attributo attributo : Attributo.values()) {
             Label nome = new Label(attributo.etichetta());
