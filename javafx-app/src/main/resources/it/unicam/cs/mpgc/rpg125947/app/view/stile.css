@@ -441,11 +441,12 @@
 .tab-pane .tab-header-area .tab {
   -fx-background-color: -superficie-alta;
   -fx-background-radius: 0;
-  -fx-padding: 4 14;
+  -fx-padding: 7 20;
 }
 
 .tab-pane .tab .tab-label {
   -fx-text-fill: -testo;
+  -fx-font-size: 14px;
 }
 
 .tab-pane .tab:hover {
