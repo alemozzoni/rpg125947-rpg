@@ -431,22 +431,36 @@
   -fx-font-size: 14px;
 }
 
-/* Schede stile "Case File Tabs": la scheda attiva passa al tono sepia. */
+/* Schede stile "Case File Tabs": la scheda attiva passa al colore del titolo. */
 .tab-pane .tab-header-area .tab {
   -fx-background-color: -superficie-alta;
   -fx-background-radius: 0;
+  -fx-padding: 4 14;
 }
 
 .tab-pane .tab .tab-label {
   -fx-text-fill: -testo;
 }
 
-.tab-pane .tab:selected {
-  -fx-background-color: -primario;
+.tab-pane .tab:hover {
+  -fx-background-color: -superficie-massima;
 }
 
+/* Scheda selezionata: riquadro nel colore del titolo (-primario-chiaro). */
+.tab-pane .tab:selected,
+.tab-pane .tab:selected:focused {
+  -fx-background-color: -primario-chiaro;
+}
+
+/* Testo scuro su sepia chiaro: ben leggibile. */
 .tab-pane .tab:selected .tab-label {
   -fx-text-fill: -su-primario;
+}
+
+/* Annulla l'alone di focus blu di default che copriva la scritta. */
+.tab-pane .tab:focused {
+  -fx-focus-color: transparent;
+  -fx-faint-focus-color: transparent;
 }
 
 /* ===== Scheda caratteristiche (creazione + taccuino) ===== */
