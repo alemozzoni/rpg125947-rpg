@@ -42,8 +42,8 @@ cd rpg125947
 2. **Esplora** le sale del museo usando le frecce/uscite sul bordo della scena.
 3. **Clicca sui personaggi** per interrogarli: le testimonianze finiscono nel taccuino. Alcune domande sono **prove di Eloquenza** (🎲): solo superandole il testimone parla. Le domande proposte **cambiano con il tuo stile investigativo**: profili diversi pongono domande diverse e ottengono risposte diverse, pur potendo raggiungere tutti la **stessa soluzione**. Le domande contrassegnate da **✦** sono quelle sbloccate dal tuo stile dominante.
 4. **Clicca sugli hotspot** (aree che si illuminano al passaggio del mouse) per ispezionare oggetti. Gli indizi più nascosti richiedono una **prova di abilità** (Osservazione, Intuito o Logica): un tiro di dado **d20 + attributo** contro una difficoltà.
-5. Ogni indizio raccolto dà **esperienza**: salendo di livello ottieni **punti abilità** da investire sugli attributi dalla scheda _Investigatore_ del Taccuino.
-6. Consulta il **Taccuino** per rivedere scheda personaggio, indizi, testimonianze e sospettati; puoi **salvare** e **caricare** la partita (progressione inclusa).
+5. Ogni indizio raccolto dà **esperienza**: salendo di livello ottieni **punti abilità** da investire sugli attributi dalla scheda _Investigatore_ del Taccuino. **Livello** e **punti abilità disponibili** sono sempre visibili in basso a sinistra.
+6. Consulta il **Taccuino** per rivedere scheda personaggio, indizi, testimonianze e sospettati. Dal pulsante **Menu** puoi **salvare**, **caricare** (progressione inclusa) o **uscire** al menu principale.
 7. Quando hai le prove, premi **Formula accusa**, indica il colpevole e seleziona gli indizi a supporto. L'accusa è corretta solo con il colpevole giusto **e** tutte le prove decisive.
 
 ---

@@ -45,21 +45,21 @@ Il modulo `javafx-app` aggiunge `app` (Launcher, Applicazione, SceneManager, App
 
 ### Modello di dominio
 
-| Classe                                       | Responsabilità                                                                                                             |
-| -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| `Indizio`                                    | Value object immutabile; identità di dominio sull'`id` (`equals`/`hashCode`).                                              |
-| `Attributo`                                  | Enum delle quattro caratteristiche (Osservazione, Intuito, Eloquenza, Logica) — vedi [Sistema di Ruolo](Sistema-di-Ruolo). |
-| `Investigatore`                              | **Scheda personaggio**: nome, attributi, livello, esperienza e punti abilità; gestisce avanzamento e potenziamento.        |
-| `EsitoProva`                                 | Value object: risultato di un singolo skill check (tiro, attributo, difficoltà, esito).                                    |
-| `Personaggio` (astratta)                     | NPC interrogabile; metodo astratto `isSospettato()`. Identità sul nome.                                                    |
-| `Sospettato` / `Testimone`                   | Sottotipi: il primo aggiunge movente e alibi ed è accusabile; il secondo no.                                               |
-| `Stanza`                                     | Sala del museo: sfondo, uscite, hotspot, personaggi; può essere chiusa a chiave.                                           |
-| `Uscita`, `Hotspot`, `Coordinata`            | Collegamento tra stanze, area ispezionabile (con eventuale **prova di abilità**), posizione relativa.                      |
-| `Dialogo`, `OpzioneDialogo`, `Testimonianza` | Conversazione e dichiarazioni; un'opzione può essere una **prova di abilità**, una testimonianza può rivelare un indizio.  |
-| `Taccuino`                                   | Raccoglie indizi (`Set`, senza duplicati), testimonianze (`Map` per fonte, **deduplicate**), sospettati e appunti.         |
-| `Accusa`, `EsitoAccusa`                      | Ipotesi finale (accusato + prove) e relativo esito con narrazione.                                                         |
-| `Caso`                                       | Aggregato dello scenario: stanze, vittima, catalogo indizi e **soluzione** (colpevole + indizi decisivi).                  |
-| `Partita`                                    | Aggregato radice dello **stato di gioco**: investigatore, caso, stanza corrente, fase, taccuino, esito.                    |
+| Classe                                       | Responsabilità                                                                                                                                                                                      |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Indizio`                                    | Value object immutabile; identità di dominio sull'`id` (`equals`/`hashCode`).                                                                                                                       |
+| `Attributo`                                  | Enum delle quattro caratteristiche (Osservazione, Intuito, Eloquenza, Logica) — vedi [Sistema di Ruolo](Sistema-di-Ruolo).                                                                          |
+| `Investigatore`                              | **Scheda personaggio**: nome, attributi, livello, esperienza e punti abilità; gestisce avanzamento e potenziamento e calcola lo **stile dominante** (`attributoDominante()`).                       |
+| `EsitoProva`                                 | Value object: risultato di un singolo skill check (tiro, attributo, difficoltà, esito).                                                                                                             |
+| `Personaggio` (astratta)                     | NPC interrogabile; metodo astratto `isSospettato()`. Identità sul nome.                                                                                                                             |
+| `Sospettato` / `Testimone`                   | Sottotipi: il primo aggiunge movente e alibi ed è accusabile; il secondo no.                                                                                                                        |
+| `Stanza`                                     | Sala del museo: sfondo, uscite, hotspot, personaggi; può essere chiusa a chiave.                                                                                                                    |
+| `Uscita`, `Hotspot`, `Coordinata`            | Collegamento tra stanze, area ispezionabile (con eventuale **prova di abilità**), posizione relativa.                                                                                               |
+| `Dialogo`, `OpzioneDialogo`, `Testimonianza` | Conversazione e dichiarazioni; un'opzione può essere una **prova di abilità** e/o essere riservata a uno **stile** investigativo (`Dialogo.opzioniPer`), una testimonianza può rivelare un indizio. |
+| `Taccuino`                                   | Raccoglie indizi (`Set`, senza duplicati), testimonianze (`Map` per fonte, **deduplicate**), sospettati e appunti.                                                                                  |
+| `Accusa`, `EsitoAccusa`                      | Ipotesi finale (accusato + prove) e relativo esito con narrazione.                                                                                                                                  |
+| `Caso`                                       | Aggregato dello scenario: stanze, vittima, catalogo indizi e **soluzione** (colpevole + indizi decisivi).                                                                                           |
+| `Partita`                                    | Aggregato radice dello **stato di gioco**: investigatore, caso, stanza corrente, fase, taccuino, esito.                                                                                             |
 
 ### Logica
 
@@ -73,13 +73,13 @@ Il modulo `javafx-app` aggiunge `app` (Launcher, Applicazione, SceneManager, App
 
 ### Front-end (`javafx-app`)
 
-| Classe                                                                                  | Responsabilità                                                                                                                                                          |
-| --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Launcher` / `Applicazione`                                                             | Avvio dell'app (Launcher separato per evitare l'errore "JavaFX runtime missing").                                                                                       |
-| `SceneManager`                                                                          | Unico gestore della navigazione tra schermate; inietta il contesto nei controller.                                                                                      |
-| `AppContext`                                                                            | Composition root del front-end: motore, scenario, persistenza, navigazione.                                                                                             |
-| `CreazioneController`, `EsplorazioneController`, `AccusaController`, `FinaleController` | Controller MVC delle rispettive viste FXML; la creazione gestisce la **distribuzione dei punti caratteristica**, l'esplorazione mostra esiti delle prove ed esperienza. |
-| `FinestraTaccuino`, `EffettoTesto`, `RisorseGrafiche`                                   | Taccuino (inclusa la **scheda Investigatore** con spesa dei punti abilità), effetto macchina da scrivere, accesso alle risorse.                                         |
+| Classe                                                                                  | Responsabilità                                                                                                                                                                                                                                                                                  |
+| --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Launcher` / `Applicazione`                                                             | Avvio dell'app (Launcher separato per evitare l'errore "JavaFX runtime missing").                                                                                                                                                                                                               |
+| `SceneManager`                                                                          | Unico gestore della navigazione tra schermate; inietta il contesto nei controller.                                                                                                                                                                                                              |
+| `AppContext`                                                                            | Composition root del front-end: motore, scenario, persistenza, navigazione.                                                                                                                                                                                                                     |
+| `CreazioneController`, `EsplorazioneController`, `AccusaController`, `FinaleController` | Controller MVC delle rispettive viste FXML; la creazione gestisce la **distribuzione dei punti caratteristica** (con anteprima dello stile), l'esplorazione filtra i dialoghi per **stile**, mostra esiti delle prove ed esperienza, l'HUD con livello/punti e il **menu** (salva/carica/esci). |
+| `FinestraTaccuino`, `EffettoTesto`, `RisorseGrafiche`                                   | Taccuino (inclusa la **scheda Investigatore** con spesa dei punti abilità), effetto macchina da scrivere, accesso alle risorse.                                                                                                                                                                 |
 
 ## Design pattern adottati
 

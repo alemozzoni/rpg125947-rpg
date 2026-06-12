@@ -52,15 +52,34 @@ ad ogni livello:  +PUNTI_PER_LIVELLO punti abilità
 
 La progressione (livello, esperienza, punti, valori degli attributi) è **persistita** nel salvataggio: ricaricando una partita si ritrova il personaggio esattamente come lo si era lasciato.
 
+## 4. Stile investigativo (dialoghi ramificati)
+
+La distribuzione dei punti non incide solo sulle prove: definisce lo **stile investigativo** del personaggio, cioè il suo **attributo dominante** (quello col valore più alto; a parità vince il primo nell'ordine dell'enum, scelta deterministica). Lo stile **ramifica i dialoghi**:
+
+- ogni opzione di dialogo può dichiarare un attributo `stile` (campo `OpzioneDialogo.stile`, opzionale): se valorizzato, la domanda compare **solo** all'investigatore con quello stile dominante; se assente, la domanda è **universale** (mostrata a chiunque);
+- il `Dialogo` espone `opzioniPer(stileDominante)`, che restituisce le opzioni universali **più** quelle riservate a quello stile;
+- nella UI le domande dedicate sono contrassegnate da **✦**.
+
+Il principio guida è: **profili diversi vivono conversazioni diverse, ma tutti possono risolvere il caso**. Gli indizi decisivi provengono dagli _hotspot_ (raggiungibili da qualunque build) e le domande essenziali (es. la chiave dell'ufficio) restano universali, quindi la **soluzione è unica**, il percorso narrativo no. Poiché lo stile è derivato dagli attributi, **evolve** anche salendo di livello e spendendo punti.
+
+Lo stile è calcolato in un solo punto del dominio — `Investigatore.attributoDominante()`, con la variante statica riusabile `Investigatore.dominante(Map)` usata anche per l'**anteprima** in fase di creazione — così la logica non è duplicata.
+
+```
+attributoDominante = l'Attributo con il valore più alto della scheda
+opzioniPer(stile)  = opzioni universali  +  opzioni il cui stile == stile dominante
+```
+
 ## Riepilogo del design
 
-| Elemento               | Tipo                 | Ruolo                                                          |
-| ---------------------- | -------------------- | -------------------------------------------------------------- |
-| `Attributo`            | enum (`model`)       | le quattro caratteristiche                                     |
-| `Investigatore`        | entità (`model`)     | scheda personaggio: attributi, livello, esperienza, punti      |
-| `EsitoProva`           | value object         | risultato di un singolo skill check                            |
-| `RisolutoreProva`      | interfaccia Strategy | come si decide l'esito di una prova                            |
-| `RisolutoreProvaDado`  | logica               | implementazione a tiro di dado d20                             |
-| `RisultatoInterazione` | record (`logic`)     | esito ricco di ispezione/interrogatorio (prova + indizio + XP) |
+| Elemento               | Tipo                 | Ruolo                                                                                     |
+| ---------------------- | -------------------- | ----------------------------------------------------------------------------------------- |
+| `Attributo`            | enum (`model`)       | le quattro caratteristiche                                                                |
+| `Investigatore`        | entità (`model`)     | scheda personaggio: attributi, livello, esperienza, punti; calcola lo **stile dominante** |
+| `OpzioneDialogo`       | record (`model`)     | domanda + testimonianza; opzionale **prova** e **stile** riservato                        |
+| `Dialogo`              | entità (`model`)     | conversazione; `opzioniPer(stile)` filtra le domande per stile                            |
+| `EsitoProva`           | value object         | risultato di un singolo skill check                                                       |
+| `RisolutoreProva`      | interfaccia Strategy | come si decide l'esito di una prova                                                       |
+| `RisolutoreProvaDado`  | logica               | implementazione a tiro di dado d20                                                        |
+| `RisultatoInterazione` | record (`logic`)     | esito ricco di ispezione/interrogatorio (prova + indizio + XP)                            |
 
 Le tre meccaniche poggiano sull'architettura esistente **senza stravolgerla**: nuove caratteristiche del dominio, una Strategy aggiuntiva e l'estensione dichiarativa dello scenario (vedi [Persistenza](Persistenza)).

@@ -11,7 +11,7 @@ La definizione del caso (stanze, personaggi, dialoghi, indizi e soluzione) vive 
 
 Lo schema XSD vincola tipi, attributi obbligatori, enumerazioni (`TipoIndizio`, `Direzione`, `Attributo`) e l'intervallo `[0,1]` delle coordinate. Il `CaricatoreCasoXml` controlla inoltre l'integrità referenziale (ogni `indizio` riferito esiste, il colpevole è tra i sospettati).
 
-Lo scenario è inoltre estendibile con le **prove di abilità** ([Sistema di Ruolo](Sistema-di-Ruolo)): un `hotspot` o un'`opzione` di dialogo possono dichiarare gli attributi opzionali `attributo` (enum `Attributo`) e `difficolta` (intero positivo). In loro assenza l'interazione riesce automaticamente, garantendo la **retrocompatibilità** degli scenari preesistenti.
+Lo scenario è inoltre estendibile con le **prove di abilità** ([Sistema di Ruolo](Sistema-di-Ruolo)): un `hotspot` o un'`opzione` di dialogo possono dichiarare gli attributi opzionali `attributo` (enum `Attributo`) e `difficolta` (intero positivo). Un'`opzione` può inoltre dichiarare l'attributo opzionale `stile` (enum `Attributo`) che la riserva a un determinato **stile investigativo**; in sua assenza la domanda è universale. Tutti questi attributi sono facoltativi: omettendoli l'interazione riesce automaticamente ed è visibile a chiunque, garantendo la **retrocompatibilità** degli scenari preesistenti.
 
 ```xml
 <hotspot id="teca" nome="Teca del Manoscritto" x="0.32" y="0.45"
