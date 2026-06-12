@@ -334,7 +334,34 @@ public final class EsplorazioneController {
         aggiornaStato();
     }
 
+    /** Apre il menu di gioco: salva, carica o esci al menu principale. */
     @FXML
+    private void onMenu() {
+        VBox pannello = pannelloSlot("Menu", "Cosa vuoi fare?");
+        pannello.getChildren().addAll(
+                bottone("Salva partita", "domanda-dialogo", this::onSalva),
+                bottone("Carica partita", "domanda-dialogo", this::onCarica),
+                bottone("Esci al menu principale", "domanda-dialogo", this::onEsci),
+                bottone("Annulla", "bottone-chiudi", this::chiudiOverlay));
+        mostraOverlay(pannello, Pos.CENTER, Insets.EMPTY);
+    }
+
+    /** Chiede conferma e, se accordata, riporta alla schermata principale. */
+    private void onEsci() {
+        VBox pannello = pannelloSlot("Esci dalla partita",
+                "Tornerai al menu principale. I progressi non salvati andranno persi.");
+        pannello.getChildren().addAll(
+                bottone("Esci senza salvare", "bottone-accusa", this::tornaAlMenuPrincipale),
+                bottone("Annulla", "bottone-chiudi", this::onMenu));
+        mostraOverlay(pannello, Pos.CENTER, Insets.EMPTY);
+    }
+
+    /** Chiude l'overlay e naviga alla schermata di creazione (pagina principale). */
+    private void tornaAlMenuPrincipale() {
+        chiudiOverlay();
+        context.getSceneManager().mostraCreazione();
+    }
+
     private void onSalva() {
         List<String> occupati = context.getRepository().slotDisponibili();
         VBox pannello = pannelloSlot("Salva partita", "Scegli in quale slot salvare:");
@@ -357,7 +384,6 @@ public final class EsplorazioneController {
         }
     }
 
-    @FXML
     private void onCarica() {
         List<String> occupati = context.getRepository().slotDisponibili();
         VBox pannello = pannelloSlot("Carica partita", "Scegli quale partita riprendere:");

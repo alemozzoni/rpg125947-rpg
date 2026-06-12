@@ -50,8 +50,7 @@
                     <Label fx:id="statoInvestigatore" styleClass="hud-stato"/>
                     <Region HBox.hgrow="ALWAYS"/>
                     <Button text="Taccuino" onAction="#onTaccuino" styleClass="bottone-hud"/>
-                    <Button text="Salva" onAction="#onSalva" styleClass="bottone-hud"/>
-                    <Button text="Carica" onAction="#onCarica" styleClass="bottone-hud"/>
+                    <Button text="Menu" onAction="#onMenu" styleClass="bottone-hud"/>
                     <Button text="Formula accusa" onAction="#onAccusa" styleClass="bottone-accusa"/>
                 </HBox>
             </VBox>
