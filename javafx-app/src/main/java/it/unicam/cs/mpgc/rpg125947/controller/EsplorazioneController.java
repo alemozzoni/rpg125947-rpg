@@ -340,6 +340,8 @@ public final class EsplorazioneController {
     private void onMenu() {
         VBox pannello = pannelloSlot("Menu", "Cosa vuoi fare?");
         pannello.setAlignment(Pos.CENTER);
+        pannello.setSpacing(8);
+        pannello.setMaxWidth(360); // menu compatto
         pannello.getChildren().addAll(
                 bottone("Salva partita", "domanda-dialogo", this::onSalva),
                 bottone("Carica partita", "domanda-dialogo", this::onCarica),
@@ -353,6 +355,8 @@ public final class EsplorazioneController {
         VBox pannello = pannelloSlot("Esci dalla partita",
                 "Tornerai al menu principale. I progressi non salvati andranno persi.");
         pannello.setAlignment(Pos.CENTER);
+        pannello.setSpacing(8);
+        pannello.setMaxWidth(360);
         pannello.getChildren().addAll(
                 bottone("Esci senza salvare", "bottone-accusa", this::tornaAlMenuPrincipale),
                 bottone("Annulla", "bottone-chiudi", this::onMenu));
@@ -427,6 +431,8 @@ public final class EsplorazioneController {
         s.getStyleClass().add("testo-ispezione");
         s.setWrapText(true);
         s.setMaxWidth(520);
+        // Pos.CENTER centra la riga singola; TextAlignment.CENTER il testo che va a capo.
+        s.setAlignment(Pos.CENTER);
         s.setTextAlignment(TextAlignment.CENTER);
         VBox pannello = new VBox(12, t, s);
         pannello.getStyleClass().add("pannello-ispezione");
