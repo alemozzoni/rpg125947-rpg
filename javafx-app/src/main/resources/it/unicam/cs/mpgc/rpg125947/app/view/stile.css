@@ -438,10 +438,20 @@
   -fx-faint-focus-color: transparent;
 }
 
+/* Sfondo della barra delle schede in tono scuro: niente strisce bianche. */
+.tab-pane .tab-header-background {
+  -fx-background-color: -superficie-bassa;
+}
+
+.tab-pane .tab-header-area {
+  -fx-padding: 0;
+}
+
 .tab-pane .tab-header-area .tab {
   -fx-background-color: -superficie-alta;
+  -fx-background-insets: 0;
   -fx-background-radius: 0;
-  -fx-padding: 7 20;
+  -fx-padding: 7 0;
 }
 
 .tab-pane .tab .tab-label {
