@@ -432,6 +432,12 @@
 }
 
 /* Schede stile "Case File Tabs": la scheda attiva passa al colore del titolo. */
+/* Niente alone di focus blu: lo azzeriamo alla radice del tab-pane. */
+.tab-pane {
+  -fx-focus-color: transparent;
+  -fx-faint-focus-color: transparent;
+}
+
 .tab-pane .tab-header-area .tab {
   -fx-background-color: -superficie-alta;
   -fx-background-radius: 0;
@@ -452,15 +458,21 @@
   -fx-background-color: -primario-chiaro;
 }
 
-/* Testo scuro su sepia chiaro: ben leggibile. */
-.tab-pane .tab:selected .tab-label {
-  -fx-text-fill: -su-primario;
+/* Rimuove il riquadro di focus blu disegnato sopra la scheda selezionata. */
+.tab-pane
+  > .tab-header-area
+  > .headers-region
+  > .tab:selected
+  .focus-indicator {
+  -fx-border-color: transparent;
+  -fx-border-width: 0;
+  -fx-border-insets: 0;
 }
 
-/* Annulla l'alone di focus blu di default che copriva la scritta. */
-.tab-pane .tab:focused {
-  -fx-focus-color: transparent;
-  -fx-faint-focus-color: transparent;
+/* Testo bianco con leggera ombra scura: ben visibile sul sepia chiaro. */
+.tab-pane .tab:selected .tab-label {
+  -fx-text-fill: white;
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 4, 0.45, 0, 1);
 }
 
 /* ===== Scheda caratteristiche (creazione + taccuino) ===== */
