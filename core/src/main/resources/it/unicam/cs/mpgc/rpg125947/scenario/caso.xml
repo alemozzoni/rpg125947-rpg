@@ -163,7 +163,7 @@
             </uscite>
             <hotspots>
                 <hotspot id="simula" nome="Quadro di Simula e Smalltalk" x="0.4" y="0.5">Quadro di Simula 67 e Smalltalk: le origini della programmazione a oggetti. Affascinante, ma nulla di sospetto.</hotspot>
-                <hotspot id="finestra_oo" nome="Finestra sul chiostro" x="0.72" y="0.30">Una finestra socchiusa sul chiostro. Nessun segno di effrazione: nessuno e entrato da qui.</hotspot>
+                <hotspot id="finestra_oo" nome="Finestra sul chiostro" x="0.66" y="0.24">Una finestra socchiusa sul chiostro. Nessun segno di effrazione: nessuno e entrato da qui.</hotspot>
             </hotspots>
         </stanza>
 
