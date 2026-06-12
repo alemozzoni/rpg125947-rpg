@@ -447,6 +447,14 @@
   -fx-padding: 0;
 }
 
+/* Nasconde il menu a tendina di overflow delle schede (a destra). */
+.tab-pane .control-buttons-tab {
+  -fx-min-width: 0;
+  -fx-pref-width: 0;
+  -fx-max-width: 0;
+  -fx-padding: 0;
+}
+
 .tab-pane .tab-header-area .tab {
   -fx-background-color: -superficie-alta;
   -fx-background-insets: 0;
