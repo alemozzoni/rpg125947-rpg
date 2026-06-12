@@ -338,6 +338,7 @@ public final class EsplorazioneController {
     @FXML
     private void onMenu() {
         VBox pannello = pannelloSlot("Menu", "Cosa vuoi fare?");
+        pannello.setAlignment(Pos.CENTER);
         pannello.getChildren().addAll(
                 bottone("Salva partita", "domanda-dialogo", this::onSalva),
                 bottone("Carica partita", "domanda-dialogo", this::onCarica),
@@ -350,6 +351,7 @@ public final class EsplorazioneController {
     private void onEsci() {
         VBox pannello = pannelloSlot("Esci dalla partita",
                 "Tornerai al menu principale. I progressi non salvati andranno persi.");
+        pannello.setAlignment(Pos.CENTER);
         pannello.getChildren().addAll(
                 bottone("Esci senza salvare", "bottone-accusa", this::tornaAlMenuPrincipale),
                 bottone("Annulla", "bottone-chiudi", this::onMenu));
