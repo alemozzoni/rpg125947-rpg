@@ -208,7 +208,7 @@
             </uscite>
             <hotspots>
                 <hotspot id="scrivania" nome="Scrivania del direttore" x="0.5" y="0.55" indizio="perizia" attributo="INTUITO" difficolta="12">Sulla scrivania, una perizia tecnica annotata di pugno dal direttore: 'Manoscritto Lovato: anacronismo evidente, databile post-1966. Falso. Confrontare stasera.' Ecco il movente.</hotspot>
-                <hotspot id="libreria" nome="Libreria" x="0.15" y="0.4">Una libreria fitta di volumi sulla storia del calcolo. Un dettaglio stride: dal piedistallo manca la targa premio in vetro.</hotspot>
+                <hotspot id="libreria" nome="Libreria" x="0.15" y="0.4">Una libreria fitta di volumi sulla storia del calcolo.</hotspot>
             </hotspots>
         </stanza>
 
