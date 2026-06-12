@@ -48,6 +48,12 @@ public final class FinestraTaccuino {
                 scheda("Sospettati", schedaSospettati(taccuino)),
                 scheda("Appunti", schedaAppunti(taccuino)));
 
+        // Le schede si distribuiscono uniformemente su tutta la larghezza disponibile
+        // (niente spazio vuoto a destra): larghezza fissa = larghezza barra / numero schede.
+        int numSchede = schede.getTabs().size();
+        schede.tabMinWidthProperty().bind(schede.widthProperty().divide(numSchede).subtract(2));
+        schede.tabMaxWidthProperty().bind(schede.widthProperty().divide(numSchede).subtract(2));
+
         Scene scene = new Scene(schede, 640, 500);
         URL css = RisorseGrafiche.foglioStile();
         if (css != null) {
